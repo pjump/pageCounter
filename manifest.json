@@ -11,8 +11,9 @@
   },
   "content_scripts": [
     {
-      "matches": [ "*://*/*" ],
-      "js": ["contentScript.js"]
+      "matches": [ "*://*/*", "file:///*/*" ],
+      "js": ["contentScript.js"],
+      "css": ["css.css"]
     }
   ],
   "browser_action": {

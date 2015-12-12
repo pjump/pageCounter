@@ -1,0 +1,8 @@
+div#pageCounter-percentage { 
+  position: fixed;
+  display: none;
+  right: 2%;
+  bottom: 3%;
+  z-index: 9999;
+  color: blue;
+}
