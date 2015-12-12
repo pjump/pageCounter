@@ -1,6 +1,6 @@
 {
-  "name": "Page Redder",
-  "description": "Toggle red background color on a page",
+  "name": "Page Counter",
+  "description": "Toggle a page counter for the current tab",
   "version": "1.0",
   "permissions": [
     "activeTab"
@@ -16,7 +16,7 @@
     }
   ],
   "browser_action": {
-    "default_title": "Make this page red"
+    "default_title": "Toggle a page counter for the current tab"
   },
   "manifest_version": 2
 }
