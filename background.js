@@ -1,12 +1,15 @@
-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// Send a toggle message to content script
 
-// Called when the user clicks on the browser action.
+var toggle = 0;
+
 chrome.browserAction.onClicked.addListener(function(tab) {
-  // No tabs or host permissions needed!
-  console.log('Turning ' + tab.url + ' red!');
-  chrome.tabs.executeScript({
-    code: 'document.body.style.backgroundColor="green"'
-  });
+  toggle = !toggle;
+  sendMessage(toggle);
 });
+
+function sendMessage(msg) {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    lastTabId = tabs[0].id;
+    chrome.tabs.sendMessage(lastTabId, msg);
+  });
+}

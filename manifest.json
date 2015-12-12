@@ -1,14 +1,20 @@
 {
   "name": "Page Redder",
-  "description": "Make the current page red",
-  "version": "2.0",
+  "description": "Toggle red background color on a page",
+  "version": "1.0",
   "permissions": [
     "activeTab"
   ],
   "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
+  "content_scripts": [
+    {
+      "matches": [ "*://*/*" ],
+      "js": ["contentScript.js"]
+    }
+  ],
   "browser_action": {
     "default_title": "Make this page red"
   },
