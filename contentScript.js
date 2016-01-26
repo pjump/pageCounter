@@ -19,21 +19,18 @@ window.H = function() {
   return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
 }
 
-window.onscroll = function(event) {
-  var percentage = document.getElementById('pageCounter-percentage');
-  //percentage.innerHTML = '' + (window.y() * 100 /document.H()) + '%';
-  percentage.innerHTML = '' + window.pagenum() + '/' + document.npages();
-};
-
 var node;
-  node = document.createElement("div"); node.appendChild(document.createTextNode("what is up")); 
-  node.id='pageCounter-percentage';
-  //node.setAttribute('style',' position: fixed; right: 2%; bottom: 3%; color: red; ');
-  document.body.appendChild(node);
+node = document.createElement("div"); node.appendChild(document.createTextNode("")); 
+node.id='pageCounter-percentage';
+document.body.appendChild(node);
+
+function update(event) {
+  node.innerHTML = '' + window.pagenum() + '/' + document.npages();
+};
+window.onscroll = update;
 
 chrome.runtime.onMessage.addListener( function(msg, sender, sendResponse) {
-  //var originalColor = originalColor || document.body.style.backgroundColor;
-  //var color = (msg  == 1) ? 'red' : 'white';
-  //document.body.style.backgroundColor=color;
-    node.style.display = msg == 1 ? 'inline' : 'none';
+  node.style.display = msg == 1 ? 'inline' : 'none';
 });
+
+update();

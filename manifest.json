@@ -3,7 +3,7 @@
   "description": "Toggle a page counter for the current tab",
   "version": "1.0",
   "permissions": [
-    "activeTab"
+    "activeTab", "storage"
   ],
   "background": {
     "scripts": ["background.js"],
